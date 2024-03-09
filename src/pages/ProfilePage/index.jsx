@@ -13,8 +13,6 @@ import {
   Text,
 } from "components";
 import Footer from "components/Footer";
-import Header from "components/Header";
-import Navbar from "components/Navbar";
 
 const textboxEightOptionsList = [
   { label: "Option1", value: "option1" },
@@ -29,8 +27,6 @@ const ProfilePagePage = () => {
     <>
       <div className="bg-white-A700 flex flex-col items-center justify-start mx-auto shadow-bs3 w-full">
         <div className="flex flex-col justify-start w-full">
-          <Header className="bg-gray-300 flex md:flex-col flex-row font-lexend md:gap-5 items-center justify-center md:px-5 shadow-bs1 w-full" />
-          <Navbar className="font-manrope h-[107px] md:h-[281px] md:px-5 relative w-full" />
           <Text
             className="md:ml-[0] ml-[206px] mt-[90px] sm:text-[38px] md:text-[44px] text-[52px] text-blue_gray-900"
             size="txtLexendBold52"
