@@ -1,44 +1,85 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { login } from "utils/auth";
 const Login = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [isLoading, setIsLoading] = useState(false);
+  const emailHandler = (e) => {
+    setCredentials({ ...credentials, email: e.target.value });
+  };
+
+  const passwordHandler = (e) => {
+    setCredentials({ ...credentials, password: e.target.value });
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await axios
+        .post("https://acca-backend-1.onrender.com/api/auth/login", credentials)
+        .then(setIsLoading(true))
+        .then((response) => {
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("id", response.data.user._id);
+          console.log(response.data)
+          navigate("/");
+        });
+      console.log(localStorage.getItem("token"));
+      console.log(localStorage.getItem("id"));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="flex items-center justify-center h-screen w-full px-5 ">
       <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-4xl w-full">
-     
         <div className="w-full p-8">
-          <p className="text-xl text-gray-600 text-center">Heureux de te revoir !</p>
-          <div className="mt-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Email 
-            </label>
-            <input
-              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
-              type="email"
-              required
-            />
-          </div>
-          <div className="mt-4 flex flex-col justify-between">
-            <div className="flex justify-between">
+          <p className="text-xl text-gray-600 text-center">
+            Heureux de te revoir !
+          </p>
+          <form onSubmit={submitHandler}>
+            <div className="mt-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
-                Mot De Passe
+                Email
               </label>
+              <input
+                className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+                type="email"
+                onChange={emailHandler}
+                required
+              />
             </div>
-            <input
-              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
-              type="password"
-            />
-            <a
-              href="#"
-              className="text-xs text-gray-500 hover:text-gray-900 text-end w-full mt-2"
-            >
-Mot de passe oublié ?            </a>
-          </div>
-          <div className="mt-8">
-            <button className="bg-blue-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-600">
-            Se Connecter
-            </button>
-          </div>
+            <div className="mt-4 flex flex-col justify-between">
+              <div className="flex justify-between">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Mot De Passe
+                </label>
+              </div>
+              <input
+                className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+                type="password"
+                required
+                onChange={passwordHandler}
+              />
+              <a
+                href="#"
+                className="text-xs text-gray-500 hover:text-gray-900 text-end w-full mt-2"
+              >
+                Mot de passe oublié ?{" "}
+              </a>
+            </div>
+            <div className="mt-8">
+              <input
+                type="submit"
+                className="bg-blue-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-600"
+                value="Se Connecter"
+              />
+            </div>
+          </form>
           <a
             href="#"
             className=" flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
@@ -66,7 +107,8 @@ Mot de passe oublié ?            </a>
               </div>
               <div className="flex w-full justify-center">
                 <h1 className="whitespace-nowrap text-gray-600 font-bold">
-                Se connecter avec google                </h1>
+                  Se connecter avec google{" "}
+                </h1>
               </div>
             </div>
           </a>
@@ -76,8 +118,13 @@ Mot de passe oublié ?            </a>
               className="text-xs text-gray-500 capitalize text-center w-full"
             >
               Vous n&apos;avez pas encore de compte ?
-              <span className="text-blue-700"                 onClick={() => navigate("/register")}
-> s'inscrire</span>
+              <span
+                className="text-blue-700"
+                onClick={() => navigate("/register")}
+              >
+                {" "}
+                s'inscrire
+              </span>
             </a>
           </div>
         </div>
