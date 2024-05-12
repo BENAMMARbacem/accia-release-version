@@ -5,6 +5,8 @@ import NotFound from "pages/NotFound";
 import Loading from "components/Loading";
 import Footer from "components/Footer";
 import { ComplexNavbar } from "components/Navbar";
+import LoginPage from "pages/LoginPage";
+import RegisterPage from "pages/RegisterPage";
 const EventTicket = React.lazy(() => import("pages/EventTicket"));
 const ReservationSuccess = React.lazy(() => import("pages/ReservationSuccess"));
 const Activities = React.lazy(() => import("pages/Activities"));
@@ -44,6 +46,8 @@ const ProjectRoutes = () => {
           {/* <Route path="/membershipsuccess" element={<MembershipSuccess />} /> */}
           {/* <Route path="/editprofilepage" element={<EditProfilePage />} /> */}
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/singlepostpage" element={<SinglePostPage />} />
           <Route path="/singleeventpage" element={<SingleEventPage />} />
           <Route path="/contact" element={<Conatct />} />
