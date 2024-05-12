@@ -1,11 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "utils/auth";
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
   const emailHandler = (e) => {
@@ -19,23 +16,27 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await axios
-        .post("https://acca-backend-1.onrender.com/api/auth/login", credentials)
-        .then(setIsLoading(true))
-        .then((response) => {
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("id", response.data.user._id);
-          console.log(response.data)
-          navigate("/");
-        });
+      await login(credentials);
       console.log(localStorage.getItem("token"));
       console.log(localStorage.getItem("id"));
     } catch (error) {
       console.log(error);
     }
+    
+    async function login() {
+      await axios
+        .post("https://acca-backend-1.onrender.com/api/auth/login", credentials)
+        .then((response) => {
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("id", response.data.user._id);
+          console.log(response.data);
+          navigate("/");
+        });
+    }
   };
   return (
-    <div className="flex items-center justify-center h-screen w-full px-5 ">
+   
+      <div className="flex items-center justify-center h-screen w-full px-5 ">
       <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-4xl w-full">
         <div className="w-full p-8">
           <p className="text-xl text-gray-600 text-center">
