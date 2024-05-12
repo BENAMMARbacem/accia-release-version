@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -6,35 +6,24 @@ import { List, Text } from "components";
 import PageTitle from "components/PageTitle";
 import RapportCard from "components/RapportCard";
 import ReturnButton from "components/ReturnButton";
+import { getAllRapports } from "utils/requests";
 
-const textboxEightOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
+
 
 const RapportpagePage = () => {
   const navigate = useNavigate();
 
-  const rapportCardPropList = [
-    {},
-    { rapportImage: "images/img_image34_1.png" },
-    { rapportImage: "images/img_image34_2.png" },
-    { rapportImage: "images/img_image34_3.png" },
-  ];
-  const rapportCardPropList1 = [
-    { rapportImage: "images/img_image34_4.png" },
-    { rapportImage: "images/img_image34_5.png" },
-    { rapportImage: "images/img_image34_6.png" },
-    { rapportImage: "images/img_image34_7.png" },
-    { rapportImage: "images/img_image34_7.png" },
-    { rapportImage: "images/img_image34_7.png" },
-    { rapportImage: "images/img_image34_7.png" },
-    { rapportImage: "images/img_image34_7.png" },
-    { rapportImage: "images/img_image34_7.png" },
-    { rapportImage: "images/img_image34_7.png" },
-    { rapportImage: "images/img_image34_7.png" },
-  ];
+    const [rapports, setRapports] = useState([]);
+    useEffect(() => {
+      getAllRapports().then((res) => {
+        setRapports(res);
+        console.log(res);
+      });
+    }, []);
+    
+    const rapportsDocs = rapports.filter((rapport) => rapport.type === "rapport");
+    const guidesDocs = rapports.filter((rapport) => rapport.type === "guide");
+  
 
   return (
     <>
@@ -47,15 +36,20 @@ const RapportpagePage = () => {
                 className="flex font-manrope  max-w-[1099px] mt-6 mx-auto md:px-5 w-full text-teal-900 text-xl"
                 size="txtLexendSemiBold14"
               >
-                Rapports{" "}
+                Rapports
               </Text>
               <List
                 className="sm:flex-col flex-row font-lexend gap-9 grid sm:grid-cols-2 md:grid-cols-2 grid-cols-4 md:ml-[0] mx-4 mt-[19px] md:px-5 w-full"
                 orientation="horizontal"
               >
-                {rapportCardPropList.map((props, index) => (
+                {rapportsDocs.map((props, index) => (
                   <React.Fragment key={`RapportCard${index}`}>
-                    <RapportCard {...props} />
+                    <RapportCard
+                      rapportTitle={props.rapportTitle}
+                      rapportImage={props.rapportImage}
+                      publishDate={props.publishDate}
+                      rapportId={props.rapportId}
+                    />
                   </React.Fragment>
                 ))}
               </List>
@@ -71,9 +65,14 @@ const RapportpagePage = () => {
                 className="sm:flex-col flex-row font-lexend gap-9 grid sm:grid-cols-2 md:grid-cols-2 grid-cols-4 md:ml-[0] mx-4 mt-[19px] md:px-5 w-full"
                 orientation="horizontal"
               >
-                {rapportCardPropList1.map((props, index) => (
+                {guidesDocs.map((props, index) => (
                   <React.Fragment key={`RapportCard${index}`}>
-                    <RapportCard {...props} />
+                   <RapportCard
+                      rapportTitle={props.rapportTitle}
+                      rapportImage={props.rapportImage}
+                      publishDate={props.publishDate}
+                      rapportId={props.rapportId}
+                    />
                   </React.Fragment>
                 ))}
               </List>

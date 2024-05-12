@@ -11,7 +11,7 @@ const RapportCard = (props) => {
             <Img
               className="h-[26px] w-[26px]"
               alt="filepdfTwo"
-              src={props?.icon}
+              src="images/img_filepdf2.svg"
             />
             <Text
               className="mt-[3px] text-lg text-light_blue-900"
@@ -57,7 +57,6 @@ const RapportCard = (props) => {
 };
 
 RapportCard.defaultProps = {
-  icon: "images/img_filepdf2.svg",
   rapportTitle: "Titre de rapport",
   rapportImage: "images/img_image34_212x235.png",
   publishDate: "28/07/2022",

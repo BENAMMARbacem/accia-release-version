@@ -2,22 +2,22 @@ import { Button, Img, Text } from "components";
 import PageTitle from "components/PageTitle";
 import { useNavigate } from "react-router-dom";
 
-export default function EventCardSection() {
+export default function EventCardSection({eventId,eventTitle,eventImage,eventDate,eventStartTime,eventEndTime,eventLocation,eventDescription}) {
     const navigate = useNavigate();
 
   return (
     <>
       <div className="flex flex-col gap-4">
         <Img
-          className="flex font-manrope  max-w-[1099px] mt-4 mx-auto md:px-5 w-full"
-          src="images/img_image68.png"
+          className="flex font-manrope  max-w-[1099px] mt-4 mx-auto md:px-5 w-full h-[300px]"
+          src={eventImage}
           alt="imageSixtyEight"
         />
         <Text
           size="txtManropeBold14"
           className="flex font-manrope  max-w-[1099px] mt-2 mx-auto md:px-5 w-full text-light_blue-900 text-lg"
         >
-          Titre de l'evenement
+          {eventTitle}
         </Text>
       </div>
 
@@ -28,7 +28,7 @@ export default function EventCardSection() {
               className="text-light_blue-900 text-sm"
               size="txtManropeBold14"
             >
-              Date et Horaire
+              {eventDate}
             </Text>
             <div className="flex flex-row items-start justify-start w-[85%] md:w-full">
               <Img
@@ -40,7 +40,7 @@ export default function EventCardSection() {
                 className="ml-1 text-blue_gray-900 text-xs"
                 size="txtManropeRegular12"
               >
-                10:00 - 11:00 AM
+                {eventStartTime} - {eventEndTime}
               </Text>
               <Img
                 className="h-4 ml-[31px] w-4"
@@ -51,7 +51,7 @@ export default function EventCardSection() {
                 className="ml-1 text-blue_gray-900 text-xs"
                 size="txtManropeRegular12"
               >
-                11/12/2021
+                {eventDate}
               </Text>
             </div>
             <div className="flex flex-row items-start justify-start w-[34%] md:w-full">
@@ -64,14 +64,14 @@ export default function EventCardSection() {
                 className="ml-1 text-blue_gray-900 text-xs"
                 size="txtManropeRegular12"
               >
-                Hotel X-Y-Z
+                {eventLocation}
               </Text>
             </div>
             <div className="flex flex-row gap-1.5 items-center justify-end md:ml-[0] ml-[86px] w-[67%] md:w-full">
               <div className="flex flex-col items-center justify-start w-[48%]">
                 <Button
                   className="common-pointer border border-light_blue-900 border-solid cursor-pointer flex items-center justify-center min-w-[80px] rounded-[12px]"
-                  onClick={() => navigate("/singleeventpage")}
+                  onClick={() => navigate(`/singleeventpage/${eventId}`)}
                   leftIcon={
                     <Img
                       className="h-4 mb-px mr-1"
@@ -114,10 +114,8 @@ export default function EventCardSection() {
             className="leading-[20.00px] mb-1 text-blue_gray-900 text-xs w-full"
             size="txtManropeRegular12"
           >
-            Commodo non magna quis ad occaecat aute fugiat veniam et id qui ut
-            quis esse culpa exercitation. Officia fugiat veniam Lorem qui veniam
-            quis esse culpa exercitation. Officia fugiat veniam Lorem qui veniam
-            quis esse culpa exercitation. Officia fugiat veniam Lorem qui veniam
+            {eventDescription}
+          
            
           </Text>
         </div>

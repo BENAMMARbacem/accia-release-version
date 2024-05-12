@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Text } from "components";
 
-const EventInfosBar = (props) => {
+const EventInfosBar = ({eventLocation,eventDate,eventStartTime,eventEndTime}) => {
   const navigate = useNavigate();
 
   return (
@@ -14,14 +14,14 @@ const EventInfosBar = (props) => {
        <div className="flex flex-row gap-2">
        <Img
           className="h-7 md:mt-0 my-4 w-7"
-          src="images/img_clock1_light_blue_900.svg"
+          src="../images/img_clock1_light_blue_900.svg"
           alt="clockOne"
         />
         <Text
           className="mb-3.5 md:mt-0 mt-[17px] text-light_blue-900 text-xl"
           size="txtManropeBold20Lightblue900"
         >
-          {props?.eventHour}
+          {eventStartTime} - {eventEndTime}
         </Text>
        </div>
 
@@ -30,14 +30,14 @@ const EventInfosBar = (props) => {
 
         <Img
           className="h-7 md:ml-[0] ml-[182px] md:mt-0 my-4 w-7"
-          src="images/img_calendar.svg"
+          src="../images/img_calendar.svg"
           alt="calendar"
           />
         <Text
           className="mb-3.5 ml-1 md:ml-[0] md:mt-0 mt-[17px] text-light_blue-900 text-xl"
           size="txtManropeBold20Lightblue900"
           >
-          {props?.eventDate}
+          {eventDate}
         </Text>
           </div>
 
@@ -45,14 +45,14 @@ const EventInfosBar = (props) => {
 
         <Img
           className="h-7 md:ml-[0] ml-[185px] md:mt-0 my-4 w-7"
-          src="images/img_pin31_light_blue_900.svg"
+          src="../images/img_pin31_light_blue_900.svg"
           alt="pinThirtyOne"
           />
         <Text
           className="mb-3.5 ml-1 md:ml-[0] md:mt-0 mt-[17px] text-light_blue-900 text-xl"
           size="txtManropeBold20Lightblue900"
           >
-          {props?.eventLocation}
+          {eventLocation}
         </Text>
           </div>
           
@@ -65,7 +65,7 @@ const EventInfosBar = (props) => {
             leftIcon={
               <Img
                 className="h-5 mb-px mr-1.5"
-                src="images/img_bag.svg"
+                src="../images/img_bag.svg"
                 alt="bag"
               />
             }

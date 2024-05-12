@@ -1,28 +1,117 @@
 {
-  "users": [
+  "posts": [
     {
       "id": 1,
-      "name": "Juliet Oma",
-      "email": "julie@yahoo.com",
-      "number": "08100000000"
+      "publisher": "Publisher 1",
+      "publishDate": "Mar 25, 2022",
+      "content": "Description of the first publication goes here",
+      "thumbnail": "images/img_image22_1.png",
+      "readMoreButtonContent": "Read More",
+      "views": "220",
+      "showReadMore": true
     },
     {
       "id": 2,
-      "name": "James Williams",
-      "email": "jameswilly@gmail.com",
-      "number": "08111111111"
+      "publisher": "Publisher 2",
+      "publishDate": "Apr 10, 2022",
+      "content": "Description of the second publication goes here",
+      "thumbnail": "images/img_image22_2.png",
+      "readMoreButtonContent": "Read More",
+      "views": "180",
+      "showReadMore": true,
+      "comments":[
+       { 
+        "text":"text",
+        "username":"username",
+        "avatar":"images/img_image22_2.png",
+        "commentDate":"10:10"
+      },  
+      { 
+        "text":"haja tnik assl",
+        "username":"radhwen a zebby",
+        "avatar":"images/img_image22_2.png",
+        "commentDate":"00:39"
+
+      }
+      ]
     },
     {
       "id": 3,
-      "name": "Ahmed Ali",
-      "email": "ahmedali012@gmail.com",
-      "number": "09022222222"
+      "publisher": "Publisher 3",
+      "publishDate": "May 5, 2022",
+      "content": "Description of the third publication goes here",
+      "thumbnail": "images/img_image22_3.png",
+      "readMoreButtonContent": "Read More",
+      "views": "350",
+      "showReadMore": true
+    },
+    {      
+      "id": 4,
+      "publisher": "Publisher 4",
+      "publishDate": "Jun 15, 2022",
+      "content": "Description of the fourth publication goes here",
+      "thumbnail": "images/img_image22_4.png",
+      "readMoreButtonContent": "Read More",
+      "views": "420",
+      "showReadMore": true
     },
     {
-      "id": 4,
-      "name": "Grace Funsho",
-      "email": "gracefunsho@gmail.com",
-      "number": "09033333333"
+      "id": 5,
+      "publisher": "Publisher 5",
+      "publishDate": "Jul 20, 2022",
+      "content": "Description of the fifth publication goes here",
+      "thumbnail": "images/img_image22_5.png",
+      "readMoreButtonContent": "Read More",
+      "views": "550",
+      "showReadMore": false
     }
-  ]
+  ],
+
+    "rapports": [
+      {
+        "id": 1,
+        "rapportTitle": "Titre de rapport 1",
+        "rapportImage": "images/img_image40.png",
+        "publishDate": "28/07/2022",
+        "type":"rapport"
+      },
+      {
+        "id": 2,
+        "rapportTitle": "Titre de rapport 2",
+        "rapportImage": "images/img_image40.png",
+        "publishDate": "29/07/2022",
+        "type":"rapport"
+      },
+      {
+        "id": 3,
+        "rapportTitle": "Titre de rapport 3",
+        "rapportImage": "images/img_image40.png",
+        "publishDate": "30/07/2022",
+        "type":"guide"
+      }
+    ],
+    "events":[
+      {
+        "id":1,
+        "eventTitle":"event title",
+        "eventImage":"../images/img_image40.png",
+        "eventDate":"01/07/2025",
+        "eventLocation":"location",
+        "eventDescription":"lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+        "eventSponsor":[{"sponsorName":"sponsor1","sponsorLogo":"images/img_image40.png"},{"sponsorName":"sponsor2","sponsorLogo":"images/img_image40.png"}],
+        "eventStartTime":"10:00",
+        "eventEndTime":"12:00"
+      },{
+        "id":2,
+        "eventTitle":"event title",
+        "eventImage":"../images/img_image40.png",
+        "eventLocation":"Bizerte",
+        "eventDescription":"description",
+        "eventSponsor":[{"sponsorName":"sponsor1","sponsorLogo":"images/img_image40.png"},{"sponsorName":"sponsor2","sponsorLogo":"images/img_image40.png"}],
+        "eventDate":"28/07/2022",
+        "eventStartTime":"10:00",
+        "eventEndTime":"12:00"
+      }
+    ]
+
 }

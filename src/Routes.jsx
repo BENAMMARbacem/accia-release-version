@@ -48,8 +48,8 @@ const ProjectRoutes = () => {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/singlepostpage" element={<SinglePostPage />} />
-          <Route path="/singleeventpage" element={<SingleEventPage />} />
+          <Route path="/singlepostpage/:postId" element={<SinglePostPage />} />
+          <Route path="/singleeventpage/:eventId" element={<SingleEventPage />} />
           <Route path="/contact" element={<Conatct />} />
           <Route path="/regles" element={<Regles />} />
           <Route path="/rapportpage" element={<Rapportpage />} />

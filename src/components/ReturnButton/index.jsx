@@ -13,7 +13,7 @@ export default function ReturnButton({path}) {
               leftIcon={
                 <Img
                   className="h-5 mr-1.5 my-px"
-                  src="images/img_arrowdown.svg"
+                  src="../images/img_arrowdown.svg"
                   alt="arrow_down"
                 />
               }

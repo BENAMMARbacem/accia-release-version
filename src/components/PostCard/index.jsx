@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Text } from "components";
+import { Link } from "react-router-dom";
 
 const PostCard = (props) => {
   const navigate = useNavigate();
@@ -23,7 +24,6 @@ const PostCard = (props) => {
                 {props?.publishDate}
               </Text>
             </div>
-
           </div>
           <Text
             className="leading-[20.00px] mt-[7px] text-gray-900 text-xs w-full"
@@ -37,29 +37,35 @@ const PostCard = (props) => {
             src={props?.thumbnail}
           />
           <div className="flex flex-row items-start justify-between mt-[17px] w-full">
-            { props?.showReadMore ? ( <Button
-              className="common-pointer cursor-pointer font-manrope min-w-[134px] text-center text-xs"
-              onClick={() => navigate("/singlepostpage")}
-              shape="round"
-              color="light_blue_900"
-              size="sm"
-              variant="fill"
-            >
-              {props?.readMoreButtonContent}
-            </Button>):(
-<></>            )}
-            <div className=" flex flex-row">            <Img
-              className="h-4  mt-0.5 w-4"
-              src="images/img_sharenetwork1.svg"
-              alt="sharenetworkOne"
-            />
+            {props?.showReadMore ? (
+              
+                <Button
+                  className="common-pointer cursor-pointer font-manrope min-w-[134px] text-center text-xs"
+                  onClick={() => navigate(`/singlepostpage/${props.postId}`)}
+                  shape="round"
+                  color="light_blue_900"
+                  size="sm"
+                  variant="fill"
+                >
+                  {props?.readMoreButtonContent}
+                </Button>
+            ) : (
+              <></>
+            )}
+            <div className=" flex flex-row">
+              {" "}
+              <Img
+                className="h-4  mt-0.5 w-4"
+                src="images/img_sharenetwork1.svg"
+                alt="sharenetworkOne"
+              />
               <Text
                 className="ml-[5px] mt-0.5 text-gray-500 text-xs"
                 size="txtManropeRegular12Gray500"
               >
                 {props?.views}
-              </Text></div>
-
+              </Text>
+            </div>
           </div>
         </div>
       </div>
@@ -70,8 +76,7 @@ const PostCard = (props) => {
 PostCard.defaultProps = {
   publisher: "Publisher",
   publishDate: "Mar 25, 2022",
-  content:
-    "le description de publicationt doint saisir ici",
+  content: "le description de publicationt doint saisir ici",
   thumbnail: "images/img_image22.png",
   readMoreButtonContent: "Voir plus",
   views: "220",

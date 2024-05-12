@@ -18,54 +18,25 @@ const UserComments = (props) => {
             <div className="flex flex-row gap-4 items-start justify-start w-[100%] md:w-full">
               <Text
                 className="text-gray-900 text-sm"
-                size="10"
+                size="txtLexendSemiBold14"
               >
                 {props?.username}
               </Text>
               <Text
                 className="mt-[3px] text-gray-500 text-xs"
-                size="txtManropeRegular12Gray500"
+                size="txtLexendSemiBold14"
               >
                 {props?.commentDate}
               </Text>
             </div>
-            <Text
-              className="mt-[7px] text-gray-900 text-sm"
-              size="txtLexendSemiBold14"
-            >
-              {props?.headline}
-            </Text>
+          
             <Text
               className="leading-[22.00px] mt-0.5 text-blue_gray-900 text-sm w-full"
               size="txtManropeRegular14Bluegray900"
             >
               {props?.content}
             </Text>
-            <div className="flex flex-row items-center justify-start mt-3 w-[13%] md:w-full">
-              <Img
-                className="h-4 w-4"
-                src="images/img_offer_gray_500.svg"
-                alt="offer_One"
-              />
-              <Text
-                className="ml-1 text-gray-500 text-sm"
-                size="txtManropeRegular14Gray500"
-              >
-                {props?.likesCount}
-              </Text>
-              <Img
-                className="h-4 ml-[21px] w-4"
-                src="images/img_profile.svg"
-                alt="profile"
-              />
-              <Text
-                className="ml-1 text-gray-500 text-sm"
-                size="txtManropeRegular14Gray500"
-              >
-                {props?.repliesCount}
-              </Text>
-            </div>
-          </div>
+<br />          </div>
         </div>
       </div>
     </>

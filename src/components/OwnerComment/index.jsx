@@ -30,7 +30,7 @@ const OwnerComment = (props) => {
               <div className="h-9 ml-[35px] w-9 bg-gray-50_02 rounded">
                 <Img
                   className="h-9 rounded my-auto"
-                  src="images/img_floatingicon.svg"
+                  src="../images/img_floatingicon.svg"
                   alt="floating_icon"
                 />
               </div>
@@ -45,7 +45,7 @@ const OwnerComment = (props) => {
 };
 
 OwnerComment.defaultProps = {
-  avatar: "images/img_rectangle.png",
+  avatar: "../images/img_rectangle.png",
   username: "User Name",
 };
 
